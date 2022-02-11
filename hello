@@ -1,0 +1,28 @@
+ text("Score: "+ score, 500,50);
+if(gameState === PLAY){
+
+
+  score = score + Math.round(getFrameRate()/60);
+
+  if(keyDown(UP_ARROW)){
+    player.velocityY=-18.8325837529853729
+  }
+  player.velocityY+=1
+  if(keyDown(RIGHT_ARROW)){
+    player.x+=1
+  }
+  
+
+  spawnObstacles()
+
+  if(obstacleGroup.isTouching(player)){ 
+  gameState = END;
+}
+}
+else if (gameState === END) {
+  gameOverImg.visible = true;
+
+obstacleGroup.setLifetimeEach(-1);
+
+player.collide(invisibleGround)
+player.collide(invisibleCeiling)
